@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Performance Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      width: 500px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    table {
+      width: 100%;
+    }
+    td {
+      padding: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background: #2575fc;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1b5edb;
+    }
+    h3 {
+      text-align: center;
+      color: #2575fc;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>Student Performance Prediction</h2>
+    <form action="/predict" method="post">
+      <table>
+        <tr><td><label for="name">Student Name</label></td><td><input type="text" id="name" name="name" required></td></tr>
+        <tr><td><label for="roll">Roll Number</label></td><td><input type="number" id="roll" name="roll" required></td></tr>
+        <tr><td><label for="class">Class</label></td><td><input type="text" id="class" name="class" required></td></tr>
+        <tr><td><label for="department">Department</label></td><td>
+          <select id="department" name="department">
+            <option>CSE</option><option>AIDS</option><option>AIML</option><option>IT</option><option>CYB</option>
+            <option>ECE</option><option>MECH</option><option>VLSI</option><option>ACT</option><option>BME</option>
+          </select>
+        </td></tr>
+        <tr><td><label for="year">Year</label></td><td>
+          <select id="year" name="year">
+            <option>First Year</option><option>Second Year</option><option>Third Year</option><option>Final Year</option>
+          </select>
+        </td></tr>
+        <tr><td><label for="quiz">Quiz Marks</label></td><td><input type="number" id="quiz" name="quiz" min="0" max="100" required></td></tr>
+        <tr><td><label for="midterm">Midterm Marks</label></td><td><input type="number" id="midterm" name="midterm" min="0" max="100" required></td></tr>
+        <tr><td><label for="model_exam">Model Exam Marks</label></td><td><input type="number" id="model_exam" name="model_exam" min="0" max="100" required></td></tr>
+      </table>
+      <button type="submit">Predict Performance</button>
+    </form>
+
+    <h3>{{ prediction_text }}</h3>
+  </div>
+</body>
+</html>
